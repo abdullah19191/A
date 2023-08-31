@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block start %}
+<h1>LOL This Is Abdullah</h1>
+<h3>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, officia
+  <br />sunt facilis architecto, odio aspernatur obcaecati debitis eaque
+  nesciunt,<br />
+  magnam consequuntur explicabo quibusdam voluptatem aperiam amet dolorem
+  impedit saepe at!
+</h3>
+<hr />
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitati</p>
+{{people}}
+<h2>People Information</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  {% for person in people %}
+  <tr>
+    <td>{{person.name}}</td>
+    <td>{{person.age}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{{text|truncatechars:80}}
+<p>
+  Is Tomato Available in Market? {% if 'Tomato' in vegetable %} Yes Available {%
+  else %} Not Available {% endif %}
+</p>
+{% endblock %}

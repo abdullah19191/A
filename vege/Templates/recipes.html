@@ -1,0 +1,75 @@
+{% extends "base.html" %} {% block start %}
+
+<div class="">
+  <h2>Add New Recipe</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="recipeName">Recipe Name</label>
+      <input
+        name="recipe_name"
+        type="text"
+        class="form-control"
+        id="recipeName"
+        placeholder="Enter recipe name"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="recipeText">Recipe Text</label>
+      <textarea
+        name="recipe_discription"
+        class="form-control"
+        id="recipeText"
+        rows="5"
+        placeholder="Enter recipe text"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="recipeImage">Recipe Image</label>
+      <input
+        type="file"
+        class="form-control-file"
+        id="recipeImage"
+        accept="image/*"
+        name="recipe_image"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Recipe</button>
+  </form>
+  <form action="">
+    <div class="search">
+      <label for="recipeName">Search Food</label>
+      <input
+        name="search"
+        type="text"
+        class="form-control"
+        id="recipeName"
+        placeholder="Sarch Food"
+      />
+      <button class="btn-search">SEARCH</button>
+    </div>
+  </form>
+
+  <table>
+    <tr>
+      <th>Recipe Name</th>
+      <th>Recipe Dist</th>
+      <th>Recipe Image</th>
+      <th>Actions</th>
+    </tr>
+    {% for recipe in recipes %}
+    <tr>
+      <td>{{recipe.recipe_name}}</td>
+      <td>{{recipe.recipe_discription}}</td>
+      <td>{{recipe.recipe_image}}</td>
+      <td>
+        <a href="/delete_recipe/{{recipe.id}}/" class="btn-delete">Delete</a>
+        <a href="/update-recipe/{{recipe.id}}/" class="btn-update">Update</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
